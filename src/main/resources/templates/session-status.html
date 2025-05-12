@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>JWT Session Status</title>
+</head>
+<body>
+<h2>Session Status: <span th:text="${status}">[status]</span></h2>
+
+<div th:if="${user != null}">
+    <p>Welcome, <b th:text="${user}">[user]</b></p>
+
+    <!-- Logout form -->
+    <form th:action="@{/cas/logout}" method="post">
+        <input type="hidden" name="token" th:value="${token}" />
+        <button type="submit">Logout</button>
+    </form>
+</div>
+<div th:if="${user == null}">
+    <form th:action="@{/cas/login}" method="get">
+        <input type="hidden" name="service" value="http://localhost:8080/cas/validate" />
+        <button type="submit">Login</button>
+    </form>
+</div>
+<p><i th:text="${message}">[message]</i></p>
+<!-- Login form -->
+
+<hr>
+<form th:action="@{/cas/session-status}" method="get">
+    <label>JWT Token: <input type="text" th:value="${token}" name="token" size="80" /></label><br/>
+    <button type="submit">Check Status</button>
+</form>
+</body>
+</html>

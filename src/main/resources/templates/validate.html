@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Validate Ticket</title>
+</head>
+<body>
+<h2>Validate Service Ticket</h2>
+<form th:action="@{/cas/validate}" method="get">
+    <label>Service: <input type="text" name="service" /></label><br/>
+    <label>Ticket: <input type="text" name="ticket" th:value="${ticket}"/></label><br/>
+    <button type="submit">Validate</button>
+</form>
+
+<div th:if="${result != null}">
+    <h3>Result:</h3>
+    <pre th:text="${result}"></pre>
+</div>
+</body>
+</html>

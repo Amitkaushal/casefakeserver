@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Client Application</title>
+</head>
+<body>
+<h2>Fake CAS Login</h2>
+<form th:action="@{/cas/login}" method="post">
+    <input type="hidden" th:name="service" th:value="${service}" />
+    <label>Username: <input type="text" name="username"/></label><br/>
+    <label>Password: <input type="password" name="password"/></label><br/>
+    <button type="submit">Login</button>
+</form>
+</body>
+</html>
