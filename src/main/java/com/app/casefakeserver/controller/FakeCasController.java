@@ -33,6 +33,17 @@ public class FakeCasController {
     private final Set<String> validTokens = new HashSet<>();
     private final Map<String, String> serviceTickets = new HashMap<>();
 
+
+    @GetMapping("/")
+    public String home() {
+        return "sourceportal"; // Loads home.html
+    }
+
+    @GetMapping("/redirect")
+    public String redirect() {
+        return "redirect:https://example.com"; // Replace with your target URL
+    }
+
     @GetMapping("/login")
     public String loginPage(@RequestParam String service, Model model) {
         model.addAttribute("service", service);
